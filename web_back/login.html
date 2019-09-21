@@ -73,8 +73,8 @@
   </div><!-- /.modal -->
   <script src="./js/lib/jquery-1.12.4.min.js"></script>
   <script src="./js/bootstrap/js/bootstrap.min.js"></script>
-  <!-- <script src="./js/utils/config.js"></script> -->
-  <script src="./js/tinymce/utils/user.js"></script>
+  <script src="./js/utils/config.js"></script>
+  <script src="./js/utils/user.js"></script>
 
   <script>
     // 思路
@@ -84,27 +84,52 @@
     // 3. 根据结果给反馈
 
     $('#btnLogin').click(function () {
-          var username = $('#userName').val();
-          var password = $('#password').val();
+      var username = $('#userName').val();
+      var password = $('#password').val();
 
-          if (username == '' && password == '') {
-            $('.loginError').html('用户名和密码不能为空');
-            // alert('你没输入啊  大兄弟');
-            $('#myModal').modal('show');
+      if (username == '' && password == '') {
+        $('.loginError').html('用户名和密码不能为空');
+        // alert('你没输入啊  大兄弟');
+        $('#myModal').modal('show');
+      } else {
+        user.login(username, password, function (res) {
+          if (res.code == 200) {
+            // alert('成功');
+            window.location.href = './index.html';
           } else {
-            user.login(username, password, function (res){
-              if (res.code == 200) {
-                // alert('成功');
-                window.location.href = './index.html';
-              } else {
-                // alert('错误');
-                $('.loginError').html(res.msg);
-                $('#myModal').modal('show');
-              }
-            
-          })
-        }
-      })
+            // alert('错误');
+            $('.loginError').html(res.msg);
+            $('#myModal').modal('show');
+          }
+
+        })
+      }
+
+      //         $('#btnLogin').click(function () {
+      //   var username = $('#userName').val();
+      //   var password = $('#password').val();
+
+      //   if (username == '' && password == '') {
+      //     $('.loginError').html('用户名和密码不能为空');
+      //     // alert('你没输入啊  大兄弟');
+      //     $('#myModal').modal('show');
+      //   } else {
+      //     var fn=function (res){
+      //       if (res.code == 200) {
+      //         // alert('成功');
+      //         window.location.href = './index.html';
+      //       } else {
+      //         // alert('错误');
+      //         $('.loginError').html(res.msg);
+      //         $('#myModal').modal('show');
+      //       }
+
+      //   }
+      //     user.login(username, password, fn)
+      // }
+      // })
+
+    })
   </script>
 </body>
 

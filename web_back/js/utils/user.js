@@ -14,5 +14,10 @@ var user = {
         $.post('http://localhost:8000/admin/logout', function (res) {
             call(res);
         })
+    },
+    getInfo: function (call) {
+        $.get('http://localhost:8000/admin/getuser', function (res) {
+            call(res);
+        })
     }
 }

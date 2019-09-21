@@ -148,18 +148,16 @@
     }
   </script>
 
-  <script src="./js/tinymce/utils/config.js"></script>
-  <script src="./js/tinymce/utils/user.js"></script>
+  <!-- <script src="./js/utils/config.js"></script> -->
+  <script src="./js/utils/user.js"></script>
 
   <script>
+
+    //退出登录
     $('#btnLogout').click(function () {
           if (window.confirm('确定要退出吗？')) {
-
-
             user.logout(function (res) {
               console.log(res);
-
-
               if (res.code == 200) {
                 window.location.href = './login.html';
               }
@@ -169,6 +167,28 @@
 
           }
         })
+
+        //获取管理员信息并显示
+        $(function () {
+          user.getInfo(function(res) {
+            console.log(res);
+            if (res.code == 200) {
+              $('#userName').html(res.data.nickname);
+              $('#userImg').attr('src',res.data.user_pic)
+            }
+            
+          })
+
+        })
+      //   $(function() {
+      //   user.getInfo(function(res) {
+      //     console.log(res);
+      //     if (res.code === 200) {
+      //       $('#userName').html(res.data.nickname);
+      //       $('#userImg').attr('src', res.data.user_pic);
+      //     }
+      //   });
+      // });
   </script>
 </body>
 
