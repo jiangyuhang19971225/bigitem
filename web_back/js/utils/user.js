@@ -1,23 +1,29 @@
+// 管理员模块：所有与管理员相关的功能全写在这里
 var user = {
-    /**
-     * 
-     * @param {*} username 用户名
-     * @param {*} password 密码
-     * @param {*} call 回调函数
-     */
-    login: function (username, password, call) {
-        $.post(URL.user_login, { user_name: username, password: password }, function (res) {
-            call(res);
-        })
-    },
-    logout: function (call) {
-        $.post(URL.user_logout, function (res) {
-            call(res);
-        })
-    },
-    getInfo: function (call) {
-        $.get(URL.user_getinfo, function (res) {
-            call(res);
-        })
-    }
-}
+  /**
+   * 管理员登陆
+   * @param {*} userName 用户名
+   * @param {*} password 密码
+   * @param {*} callBack 回调函数
+   */
+  login: function(userName, password, callBack) {
+    // alert(userName + password);
+    $.post(URLIST.user_login, { user_name: userName, password: password }, function(res) {
+      // res 是本次请求，从服务器回来的数据
+      callBack(res);
+    });
+  },
+
+  logout: function(callBack) {
+    $.post(URLIST.user_logout, function(res) {
+      callBack(res);
+    });
+  },
+
+  getInfo: function(callBack) {
+    $.get(URLIST.user_info, function(res) {
+      debugger;
+      fn(res);
+    });
+  }
+};
