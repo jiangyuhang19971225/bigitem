@@ -7,5 +7,9 @@ var URLIST = {
   category_show: BASE_URL + '/admin/category_search',
   category_add: BASE_URL + '/admin/category_add',
   category_del: BASE_URL + '/admin/category_delete',
-  category_edit: BASE_URL + '/admin/category_edit'
+  category_edit: BASE_URL + '/admin/category_edit',
+
+  article_show: BASE_URL + '/admin/search',
+  article_del: BASE_URL + '/admin/article_delete',
+  article_add: BASE_URL + '/admin/article_publish'
 };
