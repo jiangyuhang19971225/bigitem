@@ -140,16 +140,7 @@
           });
         }
       }
-
-      $(function() {
-        var status = '添加'; //是添加还是修改
-
-        // 查询，并显示
-
-        doQuery();
-
-        // 编辑分类
-        function editTr(obj) {
+      function editTr(obj) {
           $('#addModal').modal('show');
           $('#addModal .modal-title').text('修改类型');
           $('#addModal #model_add').text('保存修改');
@@ -160,6 +151,16 @@
           $('#category_slug').val(obj.slug);
           $('#divResult').hide();
         }
+
+
+      $(function() {
+        var status = '添加'; //是添加还是修改
+
+        // 查询，并显示
+
+        doQuery();
+
+        // 编辑分类
 
         // 新增分类
         $('#btnShowAddModal').click(function() {
